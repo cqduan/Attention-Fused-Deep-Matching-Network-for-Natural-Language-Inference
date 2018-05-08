@@ -189,7 +189,7 @@ def train(options):
 					  "Valid accuracy %f\n"	\
 					  "Test cost: %f\n"		\
 					  "Test accuracy: %f\n" 	\
-					  "lrate: %f" %(cost_val, acc_val, cost_tst, acc_tst, options.lr)
+					  "lrate: %.10f" %(cost_val, acc_val, cost_tst, acc_tst, options.lr)
 				display(msg, logger)
 				
 				valid_acc_record.append(acc_val)
@@ -212,7 +212,7 @@ def train(options):
 					display(msg, logger)
 					options.lr *= 0.5
 					lr_change_list.append(e)
-					msg = "lrate change to: %f" %(options.lr)
+					msg = "lrate change to: %.10f" %(options.lr)
 					display(msg, logger)
 					zipp(best_p, tparams)
 				
@@ -304,7 +304,7 @@ def main(argv):
 	parser.add_argument("--nepochs", help = "the max epoch", default = 5000, type = int)
 	parser.add_argument("--lr", help = "the initial learning rate", default = 0.0002, type = float)
 	parser.add_argument("--dropout_rate", help = "keep rate", default = 0.8, type = float)
-	parser.add_argument("--patience", help = "used to early stop", default = 8, type = int)
+	parser.add_argument("--patience", help = "used to early stop", default = 10, type = int)
 	parser.add_argument("--decay", help = "the flag to indicate whether to decay the learning rate", action = "store_false", default = True)
 	parser.add_argument("--decay_c", help = "decay rate", default = 0, type = float)
 	parser.add_argument("--clip_c", help = "grad clip", default = 10, type = float)
